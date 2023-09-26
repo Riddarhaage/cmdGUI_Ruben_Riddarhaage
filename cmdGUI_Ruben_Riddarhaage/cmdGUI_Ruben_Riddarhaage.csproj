@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="cmd_icon.png" />
+    <None Remove="Images\cmd_icon.png" />
+    <None Remove="Images\sweden_flag.png" />
+    <None Remove="Images\trash-347.png" />
+    <None Remove="Images\uk_flag.png" />
+    <None Remove="trash_can.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="cmd_icon.png" />
+    <Resource Include="Images\cmd_icon.png" />
+    <Resource Include="Images\sweden_flag.png" />
+    <Resource Include="Images\trash-347.png" />
+    <Resource Include="Images\uk_flag.png" />
+    <Resource Include="trash_can.png" />
+  </ItemGroup>
+
+</Project>

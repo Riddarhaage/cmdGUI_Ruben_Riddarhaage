@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:System="clr-namespace:System;assembly=netstandard" 
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Common Buttons -->
+    <system:String x:Key="run_button">Run</system:String>
+    <system:String x:Key="cd_button">Change Directory</system:String>
+    <system:String x:Key="mkdir_button">Make Directory</system:String>
+    <system:String x:Key="cd.._button">Go down one Directory</system:String>
+    <system:String x:Key="copy_button">Copy File/Directory</system:String>
+    <system:String x:Key="help_button">HELP</system:String>
+    <system:String x:Key="newCommand_button">Add new command</system:String>
+    <system:String x:Key="add_button">Add</system:String>
+    <system:String x:Key="cancel_button">Cancel</system:String>
+
+    <!-- Help Text -->
+    <system:String x:Key="helpCommand">Command</system:String>
+    <system:String x:Key="helpFullCommand">Full Name</system:String>
+    <system:String x:Key="helpExample">Example</system:String>
+    <system:String x:Key="helpExplanation">Explanation</system:String>
+
+    <!-- cd Command -->
+    <system:String x:Key="cdExample">FolderName</system:String>
+    <system:String x:Key="cdExplanation">Change to a different directory</system:String>
+
+    <!-- cd.. Command -->
+    <system:String x:Key="cd..Explanation">Go down one level in the directory structure</system:String>
+
+    <!-- mkdir Command -->
+    <system:String x:Key="mkdirExample">FolderName</system:String>
+    <system:String x:Key="mkdirExplanation">Create a new directory</system:String>
+
+    <!-- copy Command -->
+    <system:String x:Key="copyExample">FolderName/FileName</system:String>
+    <system:String x:Key="copyExplanation">Create a copy of a directory or a file</system:String>
+
+    <!-- dir Command -->
+    <system:String x:Key="dirExample">Path</system:String>
+    <system:String x:Key="dirExplanation">Show the content of the directory</system:String>
+
+    <!-- rmdir Command -->
+    <system:String x:Key="rmdir_button">Remove Directory</system:String>
+    <system:String x:Key="rmdirExample">FolderName</system:String>
+    <system:String x:Key="rmdirExplanation">Remove a directory</system:String>
+
+    <!-- del Command -->
+    <system:String x:Key="del_button">Delete</system:String>
+    <system:String x:Key="delExample">FileName</system:String>
+    <system:String x:Key="delExplanation">Delete a file</system:String>
+
+    <!-- find Command -->
+    <system:String x:Key="find_button">Find</system:String>
+    <system:String x:Key="findExample">FileName</system:String>
+    <system:String x:Key="findExplanation">Search for files</system:String>
+
+    <!-- move Command -->
+    <system:String x:Key="move_button">Move</system:String>
+    <system:String x:Key="moveExample">Source Destination</system:String>
+    <system:String x:Key="moveExplanation">Move files or directories</system:String>
+
+    <!-- rename Command -->
+    <system:String x:Key="rename_button">Rename</system:String>
+    <system:String x:Key="renameExample">OldName NewName</system:String>
+    <system:String x:Key="renameExplanation">Rename a file or directory</system:String>
+    
+    <!--new command label-->
+    <system:String x:Key="commandLabel">Command:</system:String>
+    
+    <!--button limit message string-->
+    <system:String x:Key="buttonLimitMessage">Limit of 10 custom command buttons reached</system:String>
+    <system:String x:Key="deleteTooltip">Delete Button</system:String>
+
+</ResourceDictionary>

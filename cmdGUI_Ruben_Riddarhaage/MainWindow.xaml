@@ -1,0 +1,459 @@
+﻿<Window
+    x:Class="cmdGUI_Ruben_Riddarhaage.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:cmdGUI_Ruben_Riddarhaage"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="mainWindow"
+    Title="cmdGUI"
+    Width="1280"
+    Height="720"
+    MinWidth="960"
+    MinHeight="720"
+    Icon="/Images/cmd_icon.png"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="LanguageResource.sv.xaml" />
+                <ResourceDictionary Source="LanguageResource.en.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--  Define a button style template  -->
+            <Style x:Key="CommonButtonStyle" TargetType="Button">
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Background" Value="#415a77" />
+                <Setter Property="Margin" Value="0,0,20,8" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="150"
+                                Height="40"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                                <ContentPresenter
+                                    Margin="0,-3,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#778da9" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style
+                x:Key="DeleteModeButtonStyle"
+                BasedOn="{StaticResource CommonButtonStyle}"
+                TargetType="Button">
+                <Setter Property="Background" Value="DarkRed" />
+                <EventSetter Event="Click" Handler="DeleteDynamicButton_Click" />
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#1B263B">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="#415a77" BorderThickness="0,0,2,0">
+            <StackPanel
+                x:Name="leftPanel"
+                Margin="0,10,0,0"
+                Orientation="Vertical">
+
+
+                <StackPanel
+                    Margin="0,0,0,40"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Name="ukButton"
+                        Width="30"
+                        Margin="0,0,4,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="Button_Click_Language_EN">
+                        <Image Source="Images\uk_flag.png" />
+                    </Button>
+
+                    <Button
+                        Name="svButton"
+                        Width="35"
+                        Height="35"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Click="Button_Click_Language_SV">
+                        <Image Source="Images\sweden_flag.png" />
+                    </Button>
+
+                </StackPanel>
+
+                <Button
+                    x:Name="createCommand"
+                    Margin="5,0,0,10"
+                    HorizontalAlignment="Center"
+                    Click="MakeNewCommandInputVisible_Click"
+                    Content="{DynamicResource newCommand_button}"
+                    FontSize="14"
+                    Style="{StaticResource CommonButtonStyle}" />
+                <Border
+                    Width="200"
+                    BorderBrush="#415a77"
+                    BorderThickness="0,1,0,0">
+                    <StackPanel
+                        x:Name="dynamicButtonPanel"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalAlignment="Top"
+                        Orientation="Vertical">
+                        <!--  Add dynamic buttons here  -->
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Button
+            x:Name="deleteCommandButton"
+            Width="30"
+            Height="35"
+            VerticalAlignment="Bottom"
+            Background="Transparent"
+            BorderThickness="0"
+            Click="ToggleDeleteMode_Click"
+            Opacity="0.6">
+            <Image
+                Width="28"
+                Height="28"
+                Margin="0,0,0,5"
+                Cursor="Hand"
+                Source="/Images/trash-347.png"
+                ToolTip="{DynamicResource deleteTooltip}" />
+        </Button>
+
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="1"
+            VerticalAlignment="Center"
+            Orientation="Vertical">
+            <TextBox
+                x:Name="currentDirectoryTextBlock"
+                Grid.Column="1"
+                Width="600"
+                Height="24"
+                Padding="5,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Background="Transparent"
+                FontSize="14"
+                Foreground="White" />
+            <StackPanel
+                Width="663"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Button Click="Cd_Click" Style="{StaticResource CommonButtonStyle}">
+                    <TextBlock TextAlignment="Center">
+                        <Run FontSize="18" Text="cd&#10;" />
+                        <Run Foreground="LightGray" Text="{DynamicResource cd_button}" />
+                    </TextBlock>
+                </Button>
+
+                <Button Click="Mkdir_Click" Style="{StaticResource CommonButtonStyle}">
+                    <TextBlock TextAlignment="Center">
+                        <Run FontSize="18" Text="mkdir&#10;" />
+                        <Run Foreground="LightGray" Text="{DynamicResource mkdir_button}" />
+                    </TextBlock>
+                </Button>
+
+                <Button Click="CdDoubleDot_Click" Style="{StaticResource CommonButtonStyle}">
+                    <TextBlock TextAlignment="Center">
+                        <Run FontSize="18" Text="cd..&#10;" />
+                        <Run Foreground="LightGray" Text="{DynamicResource cd.._button}" />
+                    </TextBlock>
+                </Button>
+
+                <Button Click="Copy_Click" Style="{StaticResource CommonButtonStyle}">
+                    <TextBlock TextAlignment="Center">
+                        <Run FontSize="18" Text="copy&#10;" />
+                        <Run Foreground="LightGray" Text="{DynamicResource copy_button}" />
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+                <Border
+                    Width="auto"
+                    Height="40"
+                    MinWidth="550"
+                    Margin="0,0,10,0"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    CornerRadius="10">
+
+                    <TextBox
+                        x:Name="commandsInput"
+                        Margin="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        BorderThickness="0"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="Black"
+                        KeyUp="CommandsInput_KeyUp" />
+                </Border>
+                <Border BorderThickness="2" CornerRadius="10">
+                    <Button
+                        x:Name="runButton"
+                        Width="100"
+                        Height="40"
+                        Click="CommandButton_Click"
+                        FontSize="20"
+                        Foreground="White">
+                        <TextBlock Width="50" TextAlignment="Center">
+
+                            <Run Text="{DynamicResource run_button}" />
+                            <Run
+                                FontSize="8"
+                                Foreground="LightGray"
+                                Text="&#10;[ENTER]" />
+                        </TextBlock>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#415a77" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#778da9" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="100"
+                                    Height="40"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                    <ContentPresenter
+                                        Margin="0,-3,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" />
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Border
+                        Width="660"
+                        Height="500"
+                        Margin="10"
+                        Background="White"
+                        BorderBrush="White"
+                        BorderThickness="1"
+                        CornerRadius="10">
+                        <TextBox
+                            x:Name="output"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            FontSize="12"
+                            Foreground="Black"
+                            IsReadOnly="True"
+                            TextWrapping="Wrap" />
+                    </Border>
+                </ScrollViewer>
+                <Border BorderThickness="2" CornerRadius="10">
+                    <Button
+                        x:Name="helpButton"
+                        Width="100"
+                        Height="40"
+                        Margin="5,0,0,0"
+                        HorizontalAlignment="Left"
+                        Click="Open_Help_Click"
+                        Content="{DynamicResource help_button}"
+                        FontSize="20"
+                        Foreground="White">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#415a77" />
+                                <Setter Property="Cursor" Value="Hand" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#778da9" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border
+                                    Width="100"
+                                    Height="40"
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="10">
+                                    <ContentPresenter
+                                        Margin="0,-3,0,0"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center" />
+
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+        <Border
+            x:Name="newCommandWindow"
+            Height="200"
+            Margin="0,0,0,200"
+            Panel.ZIndex="1000"
+            Background="#1B263B"
+            BorderBrush="#415a77"
+            BorderThickness="0,2,2,2"
+            Visibility="Hidden">
+            <StackPanel>
+
+                <Label
+                    Margin="20,20,0,0"
+                    Content="{DynamicResource commandLabel}"
+                    FontSize="16"
+                    Foreground="White" />
+                <Border
+                    Width="210"
+                    Height="40"
+                    Margin="5,0,0,20"
+                    HorizontalAlignment="Center"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    CornerRadius="10">
+
+                    <TextBox
+                        x:Name="newCommandInput"
+                        Margin="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        BorderThickness="0"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="Black" />
+                </Border>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+
+                    <Border BorderThickness="2" CornerRadius="10">
+                        <Button
+                            x:Name="confirmButton"
+                            Width="100"
+                            Height="40"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Click="CreateDynamicButton_Click"
+                            Content="{DynamicResource add_button}"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#415a77" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#778da9" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Width="100"
+                                        Height="40"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="10">
+                                        <ContentPresenter
+                                            Margin="0,-3,0,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+                    <Border BorderThickness="2" CornerRadius="10">
+                        <Button
+                            x:Name="confiraaamButton"
+                            Width="100"
+                            Height="40"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Left"
+                            Click="MakeNewCommandInputHidden_Click"
+                            Content="{DynamicResource cancel_button}"
+                            FontSize="20"
+                            Foreground="White">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#415a77" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#778da9" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Width="100"
+                                        Height="40"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="10">
+                                        <ContentPresenter
+                                            Margin="0,-3,0,0"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
+
+                </StackPanel>
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+
+</Window>
+

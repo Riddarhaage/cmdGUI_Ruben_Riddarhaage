@@ -1,0 +1,281 @@
+﻿<Window x:Class="cmdGUI_Ruben_Riddarhaage.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cmdGUI_Ruben_Riddarhaage"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Help" Height="400" Width="600" Icon="/cmd_icon.png">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="LanguageResource.sv.xaml"/>
+                <ResourceDictionary Source="LanguageResource.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="#1B263B">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <!--Header-->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0">
+            <TextBlock Foreground="White" HorizontalAlignment="Center">
+                <Run Text="{DynamicResource helpCommand}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1">
+            <TextBlock Foreground="White" HorizontalAlignment="Center">
+                <Run Text="{DynamicResource helpFullCommand}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2">
+            <TextBlock Foreground="White" HorizontalAlignment="Center">
+                <Run Text="{DynamicResource helpExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3">
+            <TextBlock Foreground="White" HorizontalAlignment="Center">
+                <Run Text="{DynamicResource helpExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!--cd help-->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="1">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="cd"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="1">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Change Directory"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="1">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="cd "/>
+                <Run Foreground="Gray" Text="{DynamicResource cdExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="1">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Run Text="{DynamicResource cdExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!--cd.. help-->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="2">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="cd.."/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="2">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--<Run Text="{DynamicResource cd.._button}"/>-->
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="2">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="cd.. "/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="2">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource cd..Explanation}"/>
+            </TextBlock>
+        </Border>
+        <!--mkdir help-->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="3">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="mkdir"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="3">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="Make Directory"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="3">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="mkdir "/>
+        <Run Foreground="Gray" Text="{DynamicResource mkdirExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="3">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Run Text="{DynamicResource mkdirExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!--Copy help-->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="4">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Run Text="copy"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="4">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Copy"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="4">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="copy "/>
+                <Run Foreground="Gray" Text="{DynamicResource copyExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="4">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource copyExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- DIR help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="5">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="dir"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="5">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Directory"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="5">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="dir / dir "/>
+                <Run Foreground="Gray" Text="{DynamicResource dirExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="5">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource dirExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- rmdir help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="6">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="rmdir"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="6">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Remove Directory"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="6">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="rmdir "/>
+                <Run Foreground="Gray" Text="{DynamicResource rmdirExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="6">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource rmdirExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- del help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="7">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="del"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="7">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Delete"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="7">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="del "/>
+                <Run Foreground="Gray" Text="{DynamicResource delExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="7">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource delExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- find help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="8">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="find"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="8">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Find"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="8">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="find "/>
+                <Run Foreground="Gray" Text="{DynamicResource findExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="8">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource findExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- move help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="9">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="move"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="9">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Move"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="9">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="move "/>
+                <Run Foreground="Gray" Text="{DynamicResource moveExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="9">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource moveExplanation}"/>
+            </TextBlock>
+        </Border>
+        <!-- rename help -->
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="0" Grid.Row="10">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="rename"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="1" Grid.Row="10">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="Rename"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="2" Grid.Row="10">
+            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="rename "/>
+                <Run Foreground="Gray" Text="{DynamicResource renameExample}"/>
+            </TextBlock>
+        </Border>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Column="3" Grid.Row="10">
+            <TextBlock TextWrapping="Wrap" FontWeight="Thin" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run Text="{DynamicResource renameExplanation}"/>
+            </TextBlock>
+        </Border>
+    </Grid>
+
+
+</Window>
