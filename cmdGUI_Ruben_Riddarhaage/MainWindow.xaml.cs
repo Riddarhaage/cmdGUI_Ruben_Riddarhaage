@@ -70,7 +70,6 @@ namespace cmdGUI_Ruben_Riddarhaage
                     {
                         string currentPath = match.Split('>')[0];
                         currentDirectoryTextBlock.Text = currentPath;
-                        currentDirectoryTextBlock.ScrollToEnd();
 
                     }
 
@@ -101,6 +100,15 @@ namespace cmdGUI_Ruben_Riddarhaage
             if (!string.IsNullOrEmpty(e.Data))
             {
                 AppendTextToOutput(e.Data);
+            }
+        }
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Open explorer window at the currentPath
+            if(currentDirectoryTextBlock.Text != null)
+            {
+            Process.Start("explorer.exe", currentDirectoryTextBlock.Text);
+
             }
         }
 
@@ -234,9 +242,12 @@ namespace cmdGUI_Ruben_Riddarhaage
         }
         private void CdDoubleDot_Click(object sender, RoutedEventArgs e)
         {
+            //make command "cd.." and "cd"
             commandsInput.Text = "cd..";
-            commandsInput.Focus();
-            commandsInput.CaretIndex = commandsInput.Text.Length;
+            //execute command
+            CommandButton_Click(sender, e);
+            commandsInput.Text = "cd ";
+            CommandButton_Click(sender, e);
         }
         private void Copy_Click(object sender, RoutedEventArgs e)
         {
@@ -250,6 +261,7 @@ namespace cmdGUI_Ruben_Riddarhaage
             helpWindow.Show();
             helpWindow.Resources.MergedDictionaries.Add(this.Resources);
         }
+
     }
 
 
