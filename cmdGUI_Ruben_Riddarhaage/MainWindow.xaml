@@ -57,6 +57,29 @@
                 <Setter Property="Background" Value="DarkRed" />
                 <EventSetter Event="Click" Handler="DeleteDynamicButton_Click" />
             </Style>
+            <Style
+                x:Key="BrowseButtonStyle"
+                BasedOn="{StaticResource CommonButtonStyle}"
+                TargetType="Button">
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                Width="80"
+                                Height="30"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                                <ContentPresenter
+                                    Margin="0,-3,0,0"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
         </ResourceDictionary>
     </Window.Resources>
@@ -68,6 +91,8 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Border BorderBrush="#415a77" BorderThickness="0,0,2,0">
@@ -151,21 +176,33 @@
             Grid.Column="1"
             VerticalAlignment="Center"
             Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Label Foreground="White">Path:</Label>
-                <TextBox
-                    x:Name="currentDirectoryTextBlock"
-                    Grid.Column="1"
-                    Width="838"
-                    Height="24"
-                    Padding="5,0,0,0"
-                    VerticalAlignment="Bottom"
-                    Background="Transparent"
-                    FontSize="14"
-                    Foreground="White"
-                    TextWrapping="NoWrap" />
+            <StackPanel
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10">
+                <StackPanel Orientation="Horizontal">
 
-                <Button x:Name="browseButton" Click="BrowseButton_Click">browse</Button>
+                    <Label FontSize="14" Foreground="White">Path:</Label>
+                    <TextBox
+                        x:Name="currentDirectoryTextBlock"
+                        Grid.Column="1"
+                        Width="720"
+                        Padding="2,5,0,0"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        FontSize="14"
+                        Foreground="White"
+                        IsReadOnly="True"
+                        TextWrapping="NoWrap" />
+                    <Button
+                        x:Name="browseButton"
+                        Margin="10,0,0,0"
+                        Click="BrowseButton_Click"
+                        Style="{StaticResource BrowseButtonStyle}">
+                        browse
+                    </Button>
+                </StackPanel>
+
             </StackPanel>
             <StackPanel
                 Width="663"

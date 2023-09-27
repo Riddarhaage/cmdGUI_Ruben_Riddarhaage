@@ -58,6 +58,8 @@ namespace cmdGUI_Ruben_Riddarhaage
 
             cmdStreamWriter = cmdProcess.StandardInput;
             currentDirectoryTextBlock.Text = Directory.GetCurrentDirectory();
+            currentDirectoryTextBlock.Focus();
+            currentDirectoryTextBlock.CaretIndex = currentDirectoryTextBlock.Text.Length;
         }
         private void CmdProcess_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
@@ -70,6 +72,8 @@ namespace cmdGUI_Ruben_Riddarhaage
                     {
                         string currentPath = match.Split('>')[0];
                         currentDirectoryTextBlock.Text = currentPath;
+                        currentDirectoryTextBlock.Focus();
+                        currentDirectoryTextBlock.CaretIndex = currentDirectoryTextBlock.Text.Length;
 
                     }
 
